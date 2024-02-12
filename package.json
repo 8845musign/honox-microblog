@@ -1,23 +1,21 @@
 {
-  "name": "microblog",
-  "version": "0.0.1",
+  "name": "basic",
+  "type": "module",
   "scripts": {
-    "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy src/index.ts",
-    "test": "vitest --run",
-    "xo": "xo",
-    "xo:fix": "xo --fix"
+    "dev": "vite",
+    "build": "vite build --mode client && vite build",
+    "preview": "wrangler pages dev ./dist",
+    "deploy": "$npm_execpath run build && wrangler pages deploy ./dist"
   },
-  "author": "",
-  "license": "ISC",
+  "private": true,
   "dependencies": {
-    "hono": "^4.0.1"
+    "hono": "^4.0.1",
+    "honox": "^0.1.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240208.0",
-    "typescript": "^5.3.3",
-    "vitest": "^1.2.2",
-    "wrangler": "^3.28.1",
-    "xo": "^0.57.0"
-  }
+    "@hono/vite-cloudflare-pages": "^0.2.4",
+    "vite": "^5.0.12",
+    "wrangler": "^3.27.0"
+  },
+  "packageManager": "yarn@4.0.2"
 }

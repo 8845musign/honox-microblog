@@ -1,7 +1,0 @@
-name = "abroller-short"
-
-compatibility_date = "2023-08-01"
-
-kv_namespaces = [
-  { binding = "BLOG_EXAMPLE", preview_id = "", id = "" }
-]

@@ -1,7 +1,11 @@
-wrangler.toml
-
-.DS_Store
-
 node_modules/
+dist
+.wrangler
+.dev.vars
+.hono
 
-.wrangler/
+# Change them to your taste:
+wrangler.toml
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
