@@ -31,6 +31,8 @@ export default createRoute(async (c) => {
           <p>{article.created_at}</p>
         </div>
       ))}
+
+      <a href="/create">POST</a>
     </div>,
     { title: name }
   );

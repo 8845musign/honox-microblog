@@ -9,8 +9,11 @@
   },
   "private": true,
   "dependencies": {
+    "@types/uuid": "^9.0.8",
     "hono": "^4.0.1",
-    "honox": "^0.1.0"
+    "honox": "^0.1.0",
+    "install": "^0.13.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240208.0",

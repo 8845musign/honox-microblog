@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export type Article = {
   id: string;
   content: string;
@@ -23,5 +25,12 @@ export const initilizeDatabase = async (db: D1Database) => {
     .prepare(
       "INSERT OR IGNORE INTO articles (id, content) VALUES (1, 'こんにちは'), (2, 'Hello');"
     )
+    .run();
+};
+
+export const createArticle = async (db: D1Database, content: string) => {
+  await db
+    .prepare("INSERT INTO articles (id, content) VALUES (?, ?)")
+    .bind(uuidv4(), content)
     .run();
 };
