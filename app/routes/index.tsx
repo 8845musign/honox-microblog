@@ -6,7 +6,11 @@ import type { Article } from "../db";
 import { findAllArticles, initilizeDatabase } from "../db";
 
 const className = css`
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap");
   font-family: sans-serif;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+  font-style: normal;
 `;
 
 export default createRoute(async (c) => {
