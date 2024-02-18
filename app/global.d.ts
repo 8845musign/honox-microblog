@@ -1,4 +1,5 @@
 import {} from "hono";
+import type { D1Database } from "@cloudflare/workers-types" }
 
 type Head = {
   title?: string;
@@ -7,7 +8,9 @@ type Head = {
 declare module "hono" {
   interface Env {
     Variables: {};
-    Bindings: {};
+    Bindings: {
+      DB: D1Database
+    };
   }
   interface ContextRenderer {
     (

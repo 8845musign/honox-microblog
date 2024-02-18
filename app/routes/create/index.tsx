@@ -5,7 +5,7 @@ export const GET = createRoute(async (c) => {
   return c.render(
     <div>
       <form method="post">
-        <textarea name="" id="" cols="30" rows="10" name="content"></textarea>
+        <textarea cols={30} rows={10} name="content"></textarea>
         <button type="submit">ポスト</button>
       </form>
     </div>,
