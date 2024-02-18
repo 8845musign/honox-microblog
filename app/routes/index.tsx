@@ -17,7 +17,10 @@ const className = css`
 export default createRoute(
   basicAuth({ username: "test", password: "test" }),
   async (c) => {
-    await initilizeDatabase(c.env.DB);
+    if (import.meta.env.DEV) {
+      await initilizeDatabase(c.env.DB);
+    }
+
     const articles = await findAllArticles(c.env.DB);
 
     const name = c.req.query("name") ?? "Hono";
