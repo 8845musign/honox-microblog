@@ -1,6 +1,5 @@
 import { css } from "hono/css";
 import { createRoute } from "honox/factory";
-import Counter from "../islands/counter";
 import { basicAuth } from "hono/basic-auth";
 
 import type { Article } from "../db";
@@ -26,8 +25,7 @@ export default createRoute(
     const name = c.req.query("name") ?? "Hono";
     return c.render(
       <div class={className}>
-        <h1>Hello, {name}!</h1>
-        <Counter />
+        <h1>ふせん</h1>
 
         {articles.map((article: Article) => (
           <div key={article.id}>
