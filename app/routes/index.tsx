@@ -26,7 +26,9 @@ export default createRoute(async (c) => {
 
       {articles.map((article: Article) => (
         <div key={article.id}>
-          <p>{article.content}</p>
+          <p>
+            <a href={`/articles/${article.id}`}>{article.content}</a>
+          </p>
           <p>{article.created_at}</p>
         </div>
       ))}

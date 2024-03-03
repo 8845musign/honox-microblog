@@ -15,6 +15,13 @@ export const findAllArticles = async (db: D1Database) => {
   return articles;
 };
 
+export const findArticleById = async (db: D1Database, id: string) => {
+  return await db
+    .prepare("SELECT * FROM articles WHERE id = ?")
+    .bind(id)
+    .first<Article>();
+};
+
 export const initilizeDatabase = async (db: D1Database) => {
   await db
     .prepare(
