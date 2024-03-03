@@ -1,4 +1,3 @@
-import { css } from "hono/css";
 import { createRoute } from "honox/factory";
 import { marked } from "marked";
 
