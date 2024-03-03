@@ -24,6 +24,11 @@ export default defineConfig(({ mode }) => {
         }),
         pagesBuild(),
       ],
+      resolve: {
+        alias: {
+          "@/": `${__dirname}/app/`,
+        },
+      },
     };
   }
 });
