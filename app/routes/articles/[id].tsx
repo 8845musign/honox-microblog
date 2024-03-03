@@ -1,5 +1,6 @@
 import { css } from "hono/css";
 import { createRoute } from "honox/factory";
+import { marked } from "marked";
 
 import { findArticleById } from "../../db";
 
@@ -19,11 +20,12 @@ export default createRoute(async (c) => {
     return c.notFound();
   }
 
+  const content = await marked(article.content);
+  const html = { __html: content };
+
   const name = c.req.query("name") ?? "Hono";
-  return c.render(
-    <div class={className}>
-      <p>{article.content}</p>
-    </div>,
-    { title: name }
-  );
+
+  return c.render(<div class={className} dangerouslySetInnerHTML={html} />, {
+    title: name,
+  });
 });

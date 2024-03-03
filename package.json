@@ -13,6 +13,7 @@
     "hono": "^4.0.8",
     "honox": "^0.1.5",
     "install": "^0.13.0",
+    "marked": "^12.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
