@@ -1,6 +1,5 @@
 import { css } from "hono/css";
 import { createRoute } from "honox/factory";
-import { basicAuth } from "hono/basic-auth";
 
 import type { Article } from "../db";
 import { findAllArticles, initilizeDatabase } from "../db";
@@ -13,30 +12,27 @@ const className = css`
   font-style: normal;
 `;
 
-export default createRoute(
-  basicAuth({ username: "test", password: "test" }),
-  async (c) => {
-    if (import.meta.env.DEV) {
-      await initilizeDatabase(c.env.DB);
-    }
-
-    const articles = await findAllArticles(c.env.DB);
-
-    const name = c.req.query("name") ?? "Hono";
-    return c.render(
-      <div class={className}>
-        <h1>ふせん</h1>
-
-        {articles.map((article: Article) => (
-          <div key={article.id}>
-            <p>{article.content}</p>
-            <p>{article.created_at}</p>
-          </div>
-        ))}
-
-        <a href="/create">POST</a>
-      </div>,
-      { title: name }
-    );
+export default createRoute(async (c) => {
+  if (import.meta.env.DEV) {
+    await initilizeDatabase(c.env.DB);
   }
-);
+
+  const articles = await findAllArticles(c.env.DB);
+
+  const name = c.req.query("name") ?? "Hono";
+  return c.render(
+    <div class={className}>
+      <h1>Memo</h1>
+
+      {articles.map((article: Article) => (
+        <div key={article.id}>
+          <p>{article.content}</p>
+          <p>{article.created_at}</p>
+        </div>
+      ))}
+
+      <a href="/create">POST</a>
+    </div>,
+    { title: name }
+  );
+});
