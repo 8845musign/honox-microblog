@@ -33,9 +33,15 @@ export const initilizeDatabase = async (db: D1Database) => {
   await db.prepare(removeNewlines(articleTestSql)).run();
 };
 
-export const createArticle = async (db: D1Database, content: string) => {
+export const createArticle = async (
+  db: D1Database,
+  payload: {
+    title: string;
+    content: string;
+  }
+) => {
   await db
-    .prepare("INSERT INTO articles (id, content) VALUES (?, ?)")
-    .bind(uuidv4(), content)
+    .prepare("INSERT INTO articles (id, title, content) VALUES (?, ?, ?)")
+    .bind(uuidv4(), payload.title, payload.content)
     .run();
 };

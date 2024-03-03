@@ -3,14 +3,7 @@ import { createRoute } from "honox/factory";
 import { marked } from "marked";
 
 import { findArticleById } from "../../db";
-
-const className = css`
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap");
-  font-family: sans-serif;
-  font-family: "Noto Serif JP", serif;
-  font-weight: 400;
-  font-style: normal;
-`;
+import { Fragment } from "hono/jsx/jsx-runtime";
 
 export default createRoute(async (c) => {
   const id = c.req.param("id");
@@ -25,7 +18,14 @@ export default createRoute(async (c) => {
 
   const name = c.req.query("name") ?? "Hono";
 
-  return c.render(<div class={className} dangerouslySetInnerHTML={html} />, {
-    title: name,
-  });
+  return c.render(
+    <Fragment>
+      <h1>{article.title}</h1>
+
+      <div dangerouslySetInnerHTML={html}></div>
+    </Fragment>,
+    {
+      title: name,
+    }
+  );
 });
