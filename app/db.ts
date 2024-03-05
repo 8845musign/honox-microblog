@@ -45,3 +45,26 @@ export const createArticle = async (
     .bind(uuidv4(), payload.title, payload.content)
     .run();
 };
+
+export const updateArticle = async (
+  db: D1Database,
+  id: string,
+  payload: {
+    title: string;
+    content: string;
+  }
+) => {
+  await db
+    .prepare(
+      "UPDATE articles SET title = ?, content = ?, updated_at = (datetime ('now')) WHERE id = ?"
+    )
+    .bind(payload.title, payload.content, id)
+    .run();
+};
+
+export const deleteArticle = async (db: D1Database, id: string) => {
+  const res = await db
+    .prepare("DELETE FROM articles WHERE id = ?")
+    .bind(id)
+    .run();
+};

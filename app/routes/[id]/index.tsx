@@ -22,6 +22,8 @@ export default createRoute(async (c) => {
       <h1>{article.title}</h1>
 
       <div dangerouslySetInnerHTML={html}></div>
+
+      <a href={`/${id}/edit`}>edit</a>
     </Fragment>,
     {
       title: name,
