@@ -1,6 +1,6 @@
 import { createRoute } from "honox/factory";
 
-import { findArticleById, updateArticle } from "../../db";
+import { findArticleById, updateArticle } from "@/db";
 
 export default createRoute(async (c) => {
   const id = c.req.param("id");
@@ -21,7 +21,7 @@ export default createRoute(async (c) => {
         <button type="submit">保存</button>
       </form>
 
-      <form action={`/${article.id}/delete`} method="post">
+      <form action={`/articles/${article.id}/delete`} method="post">
         <button type="submit">削除</button>
       </form>
     </div>,
@@ -42,5 +42,5 @@ export const POST = createRoute(async (c) => {
     title: result.title,
     content: result.content,
   });
-  return c.redirect(`/${result.id}`);
+  return c.redirect(`/articles/${result.id}`);
 });

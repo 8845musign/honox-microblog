@@ -1,7 +1,7 @@
 import { createRoute } from "honox/factory";
 import { marked } from "marked";
 
-import { findArticleById } from "../../db";
+import { findArticleById } from "@/db";
 import { Fragment } from "hono/jsx/jsx-runtime";
 
 export default createRoute(async (c) => {
@@ -23,7 +23,7 @@ export default createRoute(async (c) => {
 
       <div dangerouslySetInnerHTML={html}></div>
 
-      <a href={`/${id}/edit`}>edit</a>
+      <a href={`/articles/${id}/edit`}>edit</a>
     </Fragment>,
     {
       title: name,
